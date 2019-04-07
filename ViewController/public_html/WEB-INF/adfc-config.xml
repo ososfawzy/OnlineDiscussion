@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Search">
+    <page>/Search.jspx</page>
+  </view>
+  <view id="Tender">
+    <page>/Tender.jspx</page>
+  </view>
+  <method-call id="ExecuteWithParams">
+    <method>#{bindings.ExecuteWithParams.execute}</method>
+    <outcome>
+      <fixed-outcome>ExecuteWithParams</fixed-outcome>
+    </outcome>
+  </method-call>
+  <view id="MessageCreate">
+    <page>/MessageCreate.jspx</page>
+  </view>
+  <view id="MessageReview">
+    <page>/MessageReview.jspx</page>
+  </view>
+  <view id="MessageReply">
+    <page>/MessageReply.jspx</page>
+  </view>
+  <view id="Template">
+    <page>/Template.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>Search</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>show</from-outcome>
+      <to-activity-id>ExecuteWithParams</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>ExecuteWithParams</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>ExecuteWithParams</from-outcome>
+      <to-activity-id>Tender</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>Tender</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>return</from-outcome>
+      <to-activity-id>Search</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>create</from-outcome>
+      <to-activity-id>MessageCreate</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>review</from-outcome>
+      <to-activity-id>MessageReview</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__24">
+      <from-outcome>replyTo</from-outcome>
+      <to-activity-id>MessageReply</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__9">
+    <from-activity-id>MessageCreate</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>go</from-outcome>
+      <to-activity-id>Tender</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__12">
+    <from-activity-id>MessageReview</from-activity-id>
+    <control-flow-case id="__13">
+      <from-outcome>cancel</from-outcome>
+      <to-activity-id>Tender</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__23">
+      <from-outcome>reply</from-outcome>
+      <to-activity-id>MessageReply</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__16">
+    <from-activity-id>MessageReply</from-activity-id>
+    <control-flow-case id="__17">
+      <from-outcome>send</from-outcome>
+      <to-activity-id>Tender</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__25">
+    <from-activity-id>Template</from-activity-id>
+    <control-flow-case id="__26">
+      <from-outcome>toSearch</from-outcome>
+      <to-activity-id>Search</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__7">
+    <managed-bean-name>UploadBean</managed-bean-name>
+    <managed-bean-class>UploadBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__14">
+    <managed-bean-name>DeleteAttachments</managed-bean-name>
+    <managed-bean-class>DeleteAttachments</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

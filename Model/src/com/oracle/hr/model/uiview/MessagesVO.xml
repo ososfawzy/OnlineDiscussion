@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="MessagesVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <ViewAccessor
+    Name="EmployeesVO1"
+    ViewObjectName="com.oracle.hr.model.uiview.EmployeesVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Sentfrom"
+    ListVOName="EmployeesVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Sentfrom"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FirstName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Sentto"
+    ListVOName="EmployeesVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Sentto"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FirstName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="MessagesEO"
+    Entity="com.oracle.hr.model.entity.MessagesEO"/>
+  <ViewAttribute
+    Name="MessageId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MessageId"
+    EntityUsage="MessagesEO"
+    AliasName="MESSAGE_ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="MessageTitle"
+    PrecisionRule="true"
+    EntityAttrName="MessageTitle"
+    EntityUsage="MessagesEO"
+    AliasName="MESSAGE_TITLE"/>
+  <ViewAttribute
+    Name="MessageBody"
+    PrecisionRule="true"
+    EntityAttrName="MessageBody"
+    EntityUsage="MessagesEO"
+    AliasName="MESSAGE_BODY"/>
+  <ViewAttribute
+    Name="Sentfrom"
+    PrecisionRule="true"
+    EntityAttrName="Sentfrom"
+    EntityUsage="MessagesEO"
+    AliasName="SENTFROM"
+    LOVName="LOV_Sentfrom">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Sentto"
+    PrecisionRule="true"
+    EntityAttrName="Sentto"
+    EntityUsage="MessagesEO"
+    AliasName="SENTTO"
+    LOVName="LOV_Sentto">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Sentdate"
+    PrecisionRule="true"
+    EntityAttrName="Sentdate"
+    EntityUsage="MessagesEO"
+    AliasName="SENTDATE"/>
+  <ViewAttribute
+    Name="Type"
+    PrecisionRule="true"
+    EntityAttrName="Type"
+    EntityUsage="MessagesEO"
+    AliasName="TYPE"/>
+  <ViewLinkAccessor
+    Name="Attachments"
+    ViewLink="com.oracle.hr.model.uiview.AttachmentFkVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Search.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+               
+                    <af:pageTemplate viewId="#{pageFlowScope.Facet}" id="pt1">
+                    <f:facet name="center">
+                        <af:panelAccordion discloseMany="false" id="pa1">
+                            <af:showDetailItem id="pane1" text="Tender Information Search">
+                                <af:panelGroupLayout layout="vertical" id="pgl1">
+                                    <af:panelHeader text="Tender Search" id="ph1">
+                                        <af:query id="qryId1" headerText="Search" disclosed="true"
+                                                  value="#{bindings.ImplicitViewCriteriaQuery.queryDescriptor}"
+                                                  model="#{bindings.ImplicitViewCriteriaQuery.queryModel}"
+                                                  queryListener="#{bindings.ImplicitViewCriteriaQuery.processQuery}"
+                                                  queryOperationListener="#{bindings.ImplicitViewCriteriaQuery.processQueryOperation}"
+                                                  resultComponentId="::resId1"/>
+                                    </af:panelHeader>
+                                    <af:table value="#{bindings.Tender1.collectionModel}" var="row"
+                                              rows="#{bindings.Tender1.rangeSize}"
+                                              emptyText="#{bindings.Tender1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.Tender1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.Tender1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.Tender1.rangeSize}"
+                                              id="resId1">
+                                        <af:column headerText="#{bindings.Tender1.hints.TenderNumber.label}"
+                                                   id="resId1c1" width="126">
+                                            <af:link shortDesc="#{bindings.Tender1.hints.TenderNumber.tooltip}" id="ot2"
+                                                     text="#{row.TenderNumber}" action="show">
+                                                <af:setPropertyListener from="#{row.TenderNumber}"
+                                                                        to="#{pageFlowScope.pid}" type="action"/>
+                                            </af:link>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.Tender1.hints.TenderTitle.label}"
+                                                   id="resId1c2" width="224">
+                                            <af:outputText value="#{row.TenderTitle}"
+                                                           shortDesc="#{bindings.Tender1.hints.TenderTitle.tooltip}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.Tender1.hints.CloseDate.label}" id="resId1c3"
+                                                   width="155">
+                                            <af:outputText value="#{row.CloseDate}"
+                                                           shortDesc="#{bindings.Tender1.hints.CloseDate.tooltip}"
+                                                           id="ot4">
+                                                <af:convertDateTime pattern="#{bindings.Tender1.hints.CloseDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelGroupLayout>
+                            </af:showDetailItem>
+                        </af:panelAccordion>
+                    </f:facet>
+                    <f:facet name="header">
+                        <af:toolbar id="t1">
+                            <af:outputText value="Online Discussion Tender Search" id="ot1"/>
+                        </af:toolbar>
+                    </f:facet>
+                    </af:pageTemplate>
+                    
+                    
+                </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

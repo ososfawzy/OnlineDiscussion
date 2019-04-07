@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Template.jspx" id="d1">
+            <af:messages id="m1"/>
+                <af:form id="f1">
+                    <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx" id="pt1">
+                    
+          <f:facet name="center">
+          
+          <af:panelSplitter id="ps" inlineStyle='background-image:url("#{resource["images:Capture202.PNG"]}"); background-repeat:no-repeat; background-size:100%;'>
+          <f:facet name="first">
+            <af:group id="pt_g1">
+              <af:spacer width="500" height="20" id="s3"/>
+              <af:image id="pt_i11" source="#{resource['images:Capture333.PNG']}" inlineStyle="width:330px;"/>
+              <af:spacer width="510" height="60" id="s2"/>
+              <af:group id="pt_g3">
+                    <af:spacer width="100" height="90" id="s1"/>
+                <af:outputText value="Template 1" id="pt_ot1"/>
+                <af:spacer width="100" height="10" id="pt_s2"/>
+                <af:button text="Go" id="pt_b1" action="toSearch">
+                  <af:setPropertyListener from="/MainTemp.jspx" to="#{pageFlowScope.Facet}" type="action"/>
+                </af:button>
+                <af:separator id="pt_s7"/>
+              </af:group>
+              <af:group id="pt_g2">
+                <af:spacer width="612" height="10" id="pt_s3"/>
+                <af:outputText value="Template 2" id="pt_ot2"/>
+                <af:spacer width="100" height="10" id="pt_s4"/>
+                <af:button text="Go" id="pt_b2" action="toSearch">
+                  <af:setPropertyListener from="/MainTemp1.jspx" to="#{pageFlowScope.Facet}" type="action"/>
+                </af:button>
+                <af:separator id="pt_s6"/>
+              </af:group>
+              <af:group id="pt_g4">
+                <af:spacer width="612" height="10" id="pt_s8"/>
+                <af:outputText value="Template 3" id="pt_ot3"/>
+                <af:spacer width="100" height="10" id="pt_s9"/>
+                <af:button text="Go" id="pt_b3" action="toSearch">
+                  <af:setPropertyListener from="/MainTemp2.jspx" to="#{pageFlowScope.Facet}" type="action"/>
+                </af:button>
+                <af:separator id="pt_s10"/>
+              </af:group>
+                </af:group>
+                </f:facet>
+                
+                </af:panelSplitter>
+              </f:facet>
+                    
+                    </af:pageTemplate>
+                </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

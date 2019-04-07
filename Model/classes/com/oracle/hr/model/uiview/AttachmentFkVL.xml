@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AttachmentFkVL"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge">
+  <ViewLinkDefEnd
+    Name="Messages"
+    Cardinality="1"
+    Source="true"
+    Owner="com.oracle.hr.model.uiview.MessagesVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Messages"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.uiview.MessagesVO.MessageId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Attachments"
+    Cardinality="-1"
+    Owner="com.oracle.hr.model.uiview.AttachmentsVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Attachments"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.uiview.AttachmentsVO.MessageId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModuleAM"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true" 
+  ComponentClass="com.oracle.hr.model.module.AppModuleAMImpl"
+  ComponentInterface="com.oracle.hr.model.module.common.AppModuleAM">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="Attachments1"
+    ViewObjectName="com.oracle.hr.model.uiview.AttachmentsVO"/>
+  <ViewUsage
+    Name="Category1"
+    ViewObjectName="com.oracle.hr.model.uiview.CategoryVO"/>
+  <ViewUsage
+    Name="Employees1"
+    ViewObjectName="com.oracle.hr.model.uiview.EmployeesVO"/>
+  <ViewUsage
+    Name="Messages1"
+    ViewObjectName="com.oracle.hr.model.uiview.MessagesVO"/>
+  <ViewUsage
+    Name="Tender1"
+    ViewObjectName="com.oracle.hr.model.uiview.TenderVO"/>
+  <ViewUsage
+    Name="Attachments2"
+    ViewObjectName="com.oracle.hr.model.uiview.AttachmentsVO"/>
+  <ViewUsage
+    Name="Tenders1"
+    ViewObjectName="com.oracle.hr.model.uiview.TendersVO"/>
+  <ViewLinkUsage
+    Name="AttachmentFkVL1"
+    ViewLinkObjectName="com.oracle.hr.model.uiview.AttachmentFkVL"
+    SrcViewUsageName="com.oracle.hr.model.module.AppModuleAM.Messages1"
+    DstViewUsageName="com.oracle.hr.model.module.AppModuleAM.Attachments2"
+    Reversed="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="setFileData"
+      MethodName="setFileData">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="name"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="path"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="contTyp"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="deleteSelectedRows"
+      MethodName="deleteSelectedRows">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="selectedRowIndexes"
+        Type="java.util.List"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

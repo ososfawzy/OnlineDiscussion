@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="MessageCreate.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1" usesUpload="true">
+                
+                    <af:pageTemplate viewId="#{pageFlowScope.Facet}" id="pt1">
+                    <f:facet name="center">
+                        <af:panelAccordion discloseMany="false" id="pa1">
+                            <af:showDetailItem id="pane1" text="Create New Message">
+                                <af:panelFormLayout id="pfl1">
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                    <af:inputListOfValues id="sentfromId"
+                                                          popupTitle="Search and Select: #{bindings.Sentfrom.hints.label}"
+                                                          value="#{bindings.Sentfrom.inputValue}"
+                                                          label="#{bindings.Sentfrom.hints.label}"
+                                                          model="#{bindings.Sentfrom.listOfValuesModel}"
+                                                          required="#{bindings.Sentfrom.hints.mandatory}"
+                                                          columns="#{bindings.Sentfrom.hints.displayWidth}"
+                                                          shortDesc="#{bindings.Sentfrom.hints.tooltip}">
+                                        <f:validator binding="#{bindings.Sentfrom.validator}"/>
+                                    </af:inputListOfValues>
+                                    <af:spacer width="10" height="10" id="s3"/>
+                                    <af:inputText value="#{bindings.Type.inputValue}"
+                                                  label="#{bindings.Type.hints.label}"
+                                                  required="#{bindings.Type.hints.mandatory}"
+                                                  columns="#{bindings.Type.hints.displayWidth}"
+                                                  maximumLength="#{bindings.Type.hints.precision}"
+                                                  shortDesc="#{bindings.Type.hints.tooltip}" id="it1">
+                                        <f:validator binding="#{bindings.Type.validator}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:inputListOfValues id="senttoId"
+                                                          popupTitle="Search and Select: #{bindings.Sentto.hints.label}"
+                                                          value="#{bindings.Sentto.inputValue}"
+                                                          label="#{bindings.Sentto.hints.label}"
+                                                          model="#{bindings.Sentto.listOfValuesModel}"
+                                                          required="#{bindings.Sentto.hints.mandatory}"
+                                                          columns="#{bindings.Sentto.hints.displayWidth}"
+                                                          shortDesc="#{bindings.Sentto.hints.tooltip}">
+                                        <f:validator binding="#{bindings.Sentto.validator}"/>
+                                    </af:inputListOfValues>
+                                    <af:spacer width="10" height="10" id="s5"/>
+                                    <af:inputText value="#{bindings.MessageTitle.inputValue}"
+                                                  label="#{bindings.MessageTitle.hints.label}"
+                                                  required="#{bindings.MessageTitle.hints.mandatory}"
+                                                  columns="#{bindings.MessageTitle.hints.displayWidth}"
+                                                  maximumLength="#{bindings.MessageTitle.hints.precision}"
+                                                  shortDesc="#{bindings.MessageTitle.hints.tooltip}" id="it2">
+                                        <f:validator binding="#{bindings.MessageTitle.validator}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="10" id="s6"/>
+                                    <af:inputText value="#{bindings.MessageBody.inputValue}"
+                                                  label="#{bindings.MessageBody.hints.label}"
+                                                  required="#{bindings.MessageBody.hints.mandatory}"
+                                                  columns="#{bindings.MessageBody.hints.displayWidth}"
+                                                  maximumLength="#{bindings.MessageBody.hints.precision}"
+                                                  shortDesc="#{bindings.MessageBody.hints.tooltip}" id="it3"
+                                                  inlineStyle="width:auto; min-width:50pt;">
+                                        <f:validator binding="#{bindings.MessageBody.validator}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="10" id="s7"/>
+                                </af:panelFormLayout>
+                                <af:panelBox text="Attachments" id="pb1">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelCollection id="pc1" inlineStyle="width:873px;">
+                                        <f:facet name="menus"/>
+                                        <f:facet name="toolbar">
+                                            <af:toolbar id="t2">
+                                                <af:inputFile label="Add New Attachment" id="if1"
+                                                              valueChangeListener="#{UploadBean.uploadAction}"
+                                                              autoSubmit="true"/>
+                                                <af:button text="Delete" id="b3"
+                                                           actionListener="#{DeleteAttachments.deleteSelectedRows}"/>
+                                            </af:toolbar>
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.Attachments2.collectionModel}" var="row"
+                                                  rows="#{bindings.Attachments2.rangeSize}"
+                                                  emptyText="#{bindings.Attachments2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0"
+                                                  selectionListener="#{bindings.Attachments2.collectionModel.makeCurrent}" fetchSize="#{bindings.Attachments2.rangeSize}"
+                                                  id="t3" partialTriggers="::t3" rowSelection="multiple"
+                                                  binding="#{DeleteAttachments.searchResultsTable}">
+                                            <af:column headerText="#{bindings.Attachments2.hints.Title.label}" id="c1"
+                                                       width="149">
+                                                <af:link shortDesc="#{bindings.Attachments2.hints.Title.tooltip}"
+                                                         id="it4" text="#{row.bindings.Title.inputValue}">
+                                                    <af:fileDownloadActionListener method="#{UploadBean.downloadAction}"
+                                                                                   filename="#{row.bindings.Title.inputValue}"/>
+                                                </af:link>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Attachments2.hints.Type.label}" id="c2"
+                                                       width="108">
+                                                <af:inputText value="#{row.bindings.Type.inputValue}"
+                                                              label="#{bindings.Attachments2.hints.Type.label}"
+                                                              required="#{bindings.Attachments2.hints.Type.mandatory}"
+                                                              columns="#{bindings.Attachments2.hints.Type.displayWidth}"
+                                                              maximumLength="#{bindings.Attachments2.hints.Type.precision}"
+                                                              shortDesc="#{bindings.Attachments2.hints.Type.tooltip}"
+                                                              id="it5">
+                                                    <f:validator binding="#{row.bindings.Type.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Attachments2.hints.Description.label}"
+                                                       id="c3" width="164">
+                                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                                              label="#{bindings.Attachments2.hints.Description.label}"
+                                                              required="#{bindings.Attachments2.hints.Description.mandatory}"
+                                                              columns="#{bindings.Attachments2.hints.Description.displayWidth}"
+                                                              maximumLength="#{bindings.Attachments2.hints.Description.precision}"
+                                                              shortDesc="#{bindings.Attachments2.hints.Description.tooltip}"
+                                                              id="it6" binding="#{UploadBean.pathBind}">
+                                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Attachments2.hints.Category.label}"
+                                                       id="c4" width="115">
+                                                <af:selectOneChoice value="#{row.bindings.Category.inputValue}"
+                                                                    label="#{row.bindings.Category.label}"
+                                                                    required="#{bindings.Attachments2.hints.Category.mandatory}"
+                                                                    shortDesc="#{bindings.Attachments2.hints.Category.tooltip}"
+                                                                    id="soc1">
+                                                    <f:selectItems value="#{row.bindings.Category.items}" id="si1"/>
+                                                    <f:validator binding="#{row.bindings.Category.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Attachments2.hints.Lastupdatedby.label}"
+                                                       id="c5" width="118">
+                                                <af:inputText value="#{row.bindings.Lastupdatedby.inputValue}"
+                                                              label="#{bindings.Attachments2.hints.Lastupdatedby.label}"
+                                                              required="#{bindings.Attachments2.hints.Lastupdatedby.mandatory}"
+                                                              columns="#{bindings.Attachments2.hints.Lastupdatedby.displayWidth}"
+                                                              maximumLength="#{bindings.Attachments2.hints.Lastupdatedby.precision}"
+                                                              shortDesc="#{bindings.Attachments2.hints.Lastupdatedby.tooltip}"
+                                                              id="it7">
+                                                    <f:validator binding="#{row.bindings.Lastupdatedby.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Attachments2.hints.Lastupdatedate.label}"
+                                                       id="c6" width="110">
+                                                <af:inputDate value="#{row.bindings.Lastupdatedate.inputValue}"
+                                                              label="#{bindings.Attachments2.hints.Lastupdatedate.label}"
+                                                              required="#{bindings.Attachments2.hints.Lastupdatedate.mandatory}"
+                                                              columns="#{bindings.Attachments2.hints.Lastupdatedate.displayWidth}"
+                                                              shortDesc="#{bindings.Attachments2.hints.Lastupdatedate.tooltip}"
+                                                              id="id1">
+                                                    <f:validator binding="#{row.bindings.Lastupdatedate.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.Attachments2.hints.Lastupdatedate.format}"/>
+                                                </af:inputDate>
+                                            </af:column>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                                <f:facet name="toolbar">
+                                    <af:group id="g1">
+                                        <af:button text="Send" id="b1" actionListener="#{bindings.Commit.execute}" action="go"/>
+                                        <af:spacer width="10" height="10" id="s11"/>
+                                        <af:button text="Cancel" id="b2" actionListener="#{bindings.Rollback.execute}" immediate="true"
+                                                   action="go">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                    </af:group>
+                                </f:facet>
+                            </af:showDetailItem>
+                        </af:panelAccordion>
+                    </f:facet>
+                    <f:facet name="header">
+                        <af:toolbar id="t1">
+                            <af:outputText value="Message Create Page" id="ot1"/>
+                        </af:toolbar>
+                    </f:facet>
+                    </af:pageTemplate>
+                
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

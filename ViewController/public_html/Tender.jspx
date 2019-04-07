@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Tender.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                
+                    <af:pageTemplate viewId="#{pageFlowScope.Facet}" id="pt1">
+                    <f:facet name="center">
+                        <af:panelAccordion discloseMany="false" id="pa1">
+                            <af:showDetailItem id="pane1" text="Tender Information">
+                                <f:facet name="toolbar">
+                                    <af:button text="Return to Search Page" id="b1" action="return"/>
+                                </f:facet>
+                                <af:panelFormLayout id="pfl1">
+                                    <af:inputText value="#{bindings.TenderNumber.inputValue}"
+                                                  label="#{bindings.TenderNumber.hints.label}"
+                                                  required="#{bindings.TenderNumber.hints.mandatory}" readOnly="true"
+                                                  columns="#{bindings.TenderNumber.hints.displayWidth}"
+                                                  maximumLength="#{bindings.TenderNumber.hints.precision}"
+                                                  shortDesc="#{bindings.TenderNumber.hints.tooltip}" id="it1">
+                                        <f:validator binding="#{bindings.TenderNumber.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.TenderNumber.format}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.TenderTitle.inputValue}"
+                                                  label="#{bindings.TenderTitle.hints.label}"
+                                                  required="#{bindings.TenderTitle.hints.mandatory}" readOnly="true"
+                                                  columns="#{bindings.TenderTitle.hints.displayWidth}"
+                                                  maximumLength="#{bindings.TenderTitle.hints.precision}"
+                                                  shortDesc="#{bindings.TenderTitle.hints.tooltip}" id="it2">
+                                        <f:validator binding="#{bindings.TenderTitle.validator}"/>
+                                    </af:inputText>
+                                    <af:inputDate value="#{bindings.CloseDate.inputValue}" readOnly="true"
+                                                  label="#{bindings.CloseDate.hints.label}"
+                                                  required="#{bindings.CloseDate.hints.mandatory}"
+                                                  columns="#{bindings.CloseDate.hints.displayWidth}"
+                                                  shortDesc="#{bindings.CloseDate.hints.tooltip}" id="id1">
+                                        <f:validator binding="#{bindings.CloseDate.validator}"/>
+                                        <af:convertDateTime pattern="#{bindings.CloseDate.format}"/>
+                                    </af:inputDate>
+                                    <af:spacer width="10" height="10" id="s11"/>
+                                </af:panelFormLayout>
+                                <af:panelCollection id="pc1">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2">
+                                            <af:button text="Create New Message" id="b2"
+                                                       actionListener="#{bindings.CreateInsert.execute}"
+                                                       disabled="#{!bindings.CreateInsert.enabled}" action="create"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.Messages1.collectionModel}" var="row"
+                                              rows="#{bindings.Messages1.rangeSize}"
+                                              emptyText="#{bindings.Messages1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.Messages1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.Messages1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.Messages1.rangeSize}" id="t3"
+                                              partialTriggers="::b2 b3">
+                                        <af:column headerText="#{bindings.Messages1.hints.MessageTitle.label}" id="c1">
+                                            <af:link shortDesc="#{bindings.Messages1.hints.MessageTitle.tooltip}"
+                                                     id="ot2" text="#{row.MessageTitle}" action="review"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.Messages1.hints.Sentfrom.label}" id="c2">
+                                            <af:outputText value="#{row.Sentfrom}"
+                                                           shortDesc="#{bindings.Messages1.hints.Sentfrom.tooltip}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.Messages1.hints.Sentdate.label}" id="c3">
+                                            <af:outputText value="#{row.Sentdate}"
+                                                           shortDesc="#{bindings.Messages1.hints.Sentdate.tooltip}"
+                                                           id="ot4">
+                                                <af:convertDateTime pattern="#{bindings.Messages1.hints.Sentdate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column id="c4" headerText="Reply">
+                                            <af:button text="Reply" id="b3"
+                                                       disabled="#{!bindings.CreateInsert.enabled}"
+                                                       actionListener="#{bindings.CreateInsert.execute}"
+                                                       action="replyTo">
+                                                <af:setPropertyListener from="#{row.Sentfrom}"
+                                                                        to="#{sessionScope.Parameter}" type="action"/>
+                                                <af:setPropertyListener from="#{row.MessageTitle}"
+                                                                        to="#{sessionScope.Parameter1}" type="action"/>
+                                                <af:setPropertyListener to="#{sessionScope.Parameter3}"
+                                                                        from="internal" type="action"/>
+                                            </af:button>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:showDetailItem>
+                        </af:panelAccordion>
+                    </f:facet>
+                    <f:facet name="header">
+                        <af:toolbar id="t1">
+                            <af:outputText value="Online Discussion Messages Management" id="ot1"/>
+                        </af:toolbar>
+                    </f:facet>
+                    </af:pageTemplate>
+                
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

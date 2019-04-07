@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="SearchPageDef"
+                Package="com.oracle.hr.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Tender1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Tender1Iterator"/>
+    <searchRegion Criteria="__ImplicitViewCriteria__" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Tender1Iterator" id="ImplicitViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Tender1Iterator" id="Tender1">
+      <nodeDefinition DefName="com.oracle.hr.model.uiview.TenderVO" Name="Tender10">
+        <AttrNames>
+          <Item Value="TenderNumber"/>
+          <Item Value="TenderTitle"/>
+          <Item Value="CloseDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

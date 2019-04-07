@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="MessageReviewPageDef"
+                Package="com.oracle.hr.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Messages1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Messages1Iterator"/>
+    <iterator Binds="Attachments2" RangeSize="25" DataControl="AppModuleAMDataControl" id="Attachments2Iterator"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="Messages1Iterator" StaticList="false" Uses="LOV_Sentfrom" id="Sentfrom"/>
+    <listOfValues IterBinding="Messages1Iterator" StaticList="false" Uses="LOV_Sentto" id="Sentto"/>
+    <attributeValues IterBinding="Messages1Iterator" id="Type">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Messages1Iterator" id="MessageTitle">
+      <AttrNames>
+        <Item Value="MessageTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Messages1Iterator" id="Sentdate">
+      <AttrNames>
+        <Item Value="Sentdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Messages1Iterator" id="MessageBody">
+      <AttrNames>
+        <Item Value="MessageBody"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Attachments2Iterator" id="Attachments2">
+      <nodeDefinition DefName="com.oracle.hr.model.uiview.AttachmentsVO" Name="Attachments20">
+        <AttrNames>
+          <Item Value="Title"/>
+          <Item Value="Description"/>
+          <Item Value="Type"/>
+          <Item Value="Lastupdatedby"/>
+          <Item Value="Lastupdatedate"/>
+          <Item Value="Category"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <action IterBinding="Messages1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Messages1Iterator" id="ExecuteWithParams" InstanceName="AppModuleAMDataControl.Messages1"
+            DataControl="AppModuleAMDataControl" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_id" NDValue="#{pageFlowScope.pid}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

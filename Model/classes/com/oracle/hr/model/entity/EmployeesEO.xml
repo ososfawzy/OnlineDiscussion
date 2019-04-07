@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeesEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="EMPLOYEES"
+  AliasName="EmployeesEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="FirstName"
+    Precision="20"
+    ColumnName="FIRST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="EmpEmailNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_EMAIL_NN"/>
+      <Attr Name="_checkCondition" Value='"EMAIL" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpEmailUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_EMAIL_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.entity.EmployeesEO.Email"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpEmpIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_EMP_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.entity.EmployeesEO.FirstName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpHireDateNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_HIRE_DATE_NN"/>
+      <Attr Name="_checkCondition" Value='"HIRE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpJobNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_JOB_NN"/>
+      <Attr Name="_checkCondition" Value='"JOB_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpLastNameNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_LAST_NAME_NN"/>
+      <Attr Name="_checkCondition" Value='"LAST_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpSalaryMin">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="EMP_SALARY_MIN"/>
+      <Attr Name="_checkCondition" Value="salary > 0"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="EmpDeptFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="DEPT_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_DEPT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.entity.EmployeesEO.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpJobFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="JOB_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_JOB_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.entity.EmployeesEO.JobId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="EmpManagerFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="EMP_MANAGER_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.oracle.hr.model.entity.EmployeesEO.ManagerId"/>
+    </AttrArray>
+  </Key>
+</Entity>

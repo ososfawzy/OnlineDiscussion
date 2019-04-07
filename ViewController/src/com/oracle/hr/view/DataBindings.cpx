@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.oracle.hr.view" ClientType="Generic">
+  <pageMap>
+    <page path="/Search.jspx" usageId="com_oracle_hr_view_SearchPageDef"/>
+    <page path="/Tender.jspx" usageId="com_oracle_hr_view_TenderPageDef"/>
+    <page path="PageFlow#ExecuteWithParams" usageId="com_oracle_hr_view_adfc_config___ExecuteWithParamsPageDef"/>
+    <page path="/MessageCreate.jspx" usageId="com_oracle_hr_view_MessageCreatePageDef"/>
+    <page path="/MessageReview.jspx" usageId="com_oracle_hr_view_MessageReviewPageDef"/>
+    <page path="/MessageReply.jspx" usageId="com_oracle_hr_view_MessageReplyPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_oracle_hr_view_SearchPageDef" path="com.oracle.hr.view.pageDefs.SearchPageDef"/>
+    <page id="com_oracle_hr_view_TenderPageDef" path="com.oracle.hr.view.pageDefs.TenderPageDef"/>
+    <page id="com_oracle_hr_view_adfc_config___ExecuteWithParamsPageDef"
+          path="com.oracle.hr.view.pageDefs.adfc_config___ExecuteWithParamsPageDef"/>
+    <page id="com_oracle_hr_view_MessageCreatePageDef" path="com.oracle.hr.view.pageDefs.MessageCreatePageDef"/>
+    <page id="com_oracle_hr_view_MessageReviewPageDef" path="com.oracle.hr.view.pageDefs.MessageReviewPageDef"/>
+    <page id="com_oracle_hr_view_MessageReplyPageDef" path="com.oracle.hr.view.pageDefs.MessageReplyPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleAMDataControl" Package="com.oracle.hr.model.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>
