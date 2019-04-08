@@ -8,5 +8,5 @@
 
 # Project MD-070 Sheet
 
-https://drive.google.com/open?id=10PB1-BGnQV7H5Nq7yHzqDSX1oRkzXn6_yUeK1jgjQ_0
+[MIDOR_MD070-MajorExtensions-Online Discussion Messages Management Sheet.docx](https://github.com/ososfawzy/OnlineDiscussion/files/3052394/MIDOR_MD070-MajorExtensions-Online.Discussion.Messages.Management.Sheet.docx)
 
